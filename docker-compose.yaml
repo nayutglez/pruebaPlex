@@ -15,7 +15,7 @@ services:
       - TZ=Atlántico/Canarias
     volumes:
       - ${STORAGE}/Plex Media Server:/root/Library/Application Support/Plex Media Server
-      - ${MEDIA}:/mnt/Pendrive
+      - ${MEDIA}:/media
       - ${STORAGE}/tmp:/tmp
     restart: unless-stopped
     network_mode: "host" # Solo funciona en Linux
