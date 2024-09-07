@@ -7,10 +7,6 @@ services:
     expose:
       - 32400
       - 33400
-    # Descomentar si NO usas network_mode: "host"
-    # ports:
-    #  - 32400:32400
-    #  - 33400:33400
     environment:
       - TZ=Atlántico/Canarias
     volumes:
@@ -19,5 +15,16 @@ services:
       - ${STORAGE}/tmp:/tmp
     restart: unless-stopped
     network_mode: "host" # Solo funciona en Linux
+
+  homeassistant:
+    container_name: homeassistant
+    image: "ghcr.io/home-assistant/home-assistant:stable"
+    volumes:
+      - /PATH_TO_YOUR_CONFIG:/config
+      - /etc/localtime:/etc/localtime:ro
+      - /run/dbus:/run/dbus:ro
+    restart: unless-stopped
+    privileged: true
+    network_mode: host
 
   
